@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+    <title>Retro Text Adventure Engine</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <style>
+        .text-greenChrome {
+            font-family: 'VT323', monospace;
+            font-size: 18pt;
+            color: lime;
+        }
+
+        .btn-greenChrome {
+            font-family: 'VT323', monospace;
+            font-size: 16pt;
+            color: black;
+            background-color: lime;
+            border-color: lime;
+        }
+
+        .screen {
+            border-radius: 30px;
+            border: 10px inset beige;
+        }
+
+        .screen-bg {
+            background-color: AntiqueWhite;
+        }
+        
+        .powerBtn {
+            position: absolute;
+            bottom: 3%;
+            right: 8%;
+            height: 10px;
+            width: 15px;
+            background-color: green;
+        }
+        
+        .maxHeight {
+            max-height: 28em;
+            overflow-y: scroll;
+        }
+        
+            /* width */
+            ::-webkit-scrollbar {
+              width: 5px;
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track {
+              background: beige;
+            }
+
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+              background: beige;
+            }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+              background: lime;
+            }
+    </style>
+</head>
+
+<body>
+    <header class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+        <nav class="container-fluid">
+            <a class="navbar-brand" href="#"><h1>Retro Text Adventure Engine</h1></a>
+
+        </nav>
+    </header>
+
+    <main class="container bg-dark text-greenChrome">
+        <div class="row">
+
+            <div class="card p-4 pt-3 screen-bg pb-5">
+                <div class="card-body screen bg-dark maxHeight">
+                    <h2 class="p-2" id="sceneTitle">Starting the game</h2>
+                    <div id="sceneText">
+                        <p>Welcome to Text Adventure Engine, this story telling software allows you to enter a brand new exciting world. One filled with danger, intrige, mystery and problem solving. If you make the right choices you will get to go on with your adventure and win! If you don't, you will lose and have to start your journey again.</p>
+                        <p>To begin, type in START and click/ tap the submit button.</p>
+                    </div>
+
+                    <label class="d-block p-3" id="sceneInstruction">Enter instruction</label>
+                    <input class="d-block m-3 mt-0 mb-0 bg-dark text-greenChrome border-success w-75" type="text">
+
+                    <input type="button" value="Submit" class="m-4 btn btn-greenChrome" id="sceneSubmit">
+                    <p class="p-3 text-greenChrome" id="sceneMessage">Errors and instructions will appear here...</p>
+                </div>
+                <span class="powerBtn"></span>
+                <span class="text-dark">SuperPuppy Pro 6000</span>
+            </div>
+        </div>
+        <script>
+            
+            var scene = {
+                title: document.getElementById('sceneTitle'),
+                text: document.getElementById('sceneText'),
+                instruction: document.getElementById('sceneInstruction'),
+                submit: document.getElementById('sceneSubmit'),
+                message: document.getElementById('sceneMessage')                
+            }
+            
+            var game = {
+                
+                start: {
+                    title: 'Starting the game',
+                    scene: "<p>Welcome to Text Adventure Engine, this story telling software allows you to enter a brand new exciting world. One filled with danger, intrige, mystery and problem solving. If you make the right choices you will get to go on with your adventure and win! If you don't, you will lose and have to start your journey again.</p><p>To begin, type in START and click/ tap the submit button.</p>",
+                    instruction: 'Enter instruction',
+                    cmd: [ { cmd: 'start', func: function() { advanceTo('scene1') } } ],
+                },
+                scene1: {
+                    title: 'Starting the game',
+                    scene: "<p>Welcome to Text Adventure Engine, this story telling software allows you to enter a brand new exciting world. One filled with danger, intrige, mystery and problem solving. If you make the right choices you will get to go on with your adventure and win! If you don't, you will lose and have to start your journey again.</p><p>To begin, type in START and click/ tap the submit button.</p>",
+                    instruction: 'Enter instruction',
+                    cmd: [ { cmd: 'go back', func: function() { advanceTo('start') } } ],
+                },
+            }
+            
+            function submitInstruction(e) {
+                e.
+            }
+            
+            function advanceTo(s) {
+                scene.title.innerHTML = game.s.title;
+                scene.scene.innerHTML = game.s.scene;
+                scene.instruction.innerHTML = game.s.title;
+            }
+            
+        
+        </script>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-light text-center text-lg-start mt-3">
+        <!-- Grid container -->
+        <div class="container p-4">
+            <!--Grid row-->
+            <div class="row">
+                <!--Grid column-->
+                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                    <h2 class="text-uppercase">Instructions</h2>
+                    <p>The description sets the scene. READ IT! &#128522</p>
+                    <p>Type instructions into the text field and hit return, or go. &#9193;</p>
+                    <p>If you don't know what to do next, type in HELP! &#10067;</p>
+                </div>
+                <!--Grid column-->
+
+            </div>
+            <!--Grid row-->
+        </div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+            Copyright© <em>Daniel Foreman</em>, all rights reserved.
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+</body></html>
